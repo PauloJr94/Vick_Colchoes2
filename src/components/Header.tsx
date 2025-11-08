@@ -74,15 +74,6 @@ const Header = () => {
             >
               <User className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-accent/10">
-              <Heart className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-accent/10 relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                0
-              </span>
-            </Button>
             <Button variant="ghost" size="icon" className="lg:hidden">
               <Menu className="h-5 w-5" />
             </Button>
