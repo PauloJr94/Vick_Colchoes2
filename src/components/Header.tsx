@@ -36,11 +36,11 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-3">
             <img src={logo} alt="V Colchões" className="h-12 w-12 rounded-full object-cover" />
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-foreground">V Colchões</h1>
-              <p className="text-xs text-muted-foreground">Sua melhor noite de sono</p>
+              <p className="text-xs text-muted-foreground">vick</p>
             </div>
           </a>
 
