@@ -1,12 +1,22 @@
-import { ShoppingCart, Heart, User, Menu, MapPin, Phone, Mail } from "lucide-react";
+import { User, Menu, MapPin, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useAdmin } from "@/hooks/useAdmin";
+import { useCategoryFilter } from "@/hooks/useCategoryFilter";
 import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const navigate = useNavigate();
   const { isAdmin } = useAdmin();
+  const { setSelectedCategory } = useCategoryFilter();
+
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category.toLowerCase());
+    const element = document.getElementById("produtos");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
@@ -36,11 +46,11 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-3">
             <img src={logo} alt="V Colchões" className="h-12 w-12 rounded-full object-cover" />
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-foreground">V Colchões</h1>
-              <p className="text-xs text-muted-foreground">Sua melhor noite de sono</p>
+              <p className="text-xs text-muted-foreground">vick</p>
             </div>
           </a>
 
@@ -73,15 +83,6 @@ const Header = () => {
               aria-label="Acessar painel administrativo"
             >
               <User className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-accent/10">
-              <Heart className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-accent/10 relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                0
-              </span>
             </Button>
             <Button variant="ghost" size="icon" className="lg:hidden">
               <Menu className="h-5 w-5" />
