@@ -42,36 +42,43 @@ const ProductDetail = () => {
   const fetchProduct = async (productId: string) => {
     try {
       setLoading(true);
+
+      // Fetch the product
       const { data, error } = await supabase
         .from("products")
-        .select(`
-          *,
-          categories (
-            name
-          ),
-          product_images (
-            id,
-            image_url
-          )
-        `)
+        .select("*")
         .eq("id", productId)
         .single();
 
       if (error) throw error;
 
-      setProduct(data);
+      // Fetch the category if category_id exists
+      let categoryData = null;
+      if (data.category_id) {
+        const { data: catData, error: catError } = await supabase
+          .from("categories")
+          .select("name")
+          .eq("id", data.category_id)
+          .single();
 
+        if (!catError && catData) {
+          categoryData = catData;
+        }
+      }
+
+      // Set product with category
+      const productWithCategory = {
+        ...data,
+        categories: categoryData ? { name: categoryData.name } : null
+      };
+
+      setProduct(productWithCategory);
+
+      // Handle images
       const allImages = [];
       if (data.image_url) {
         allImages.push(data.image_url);
         setSelectedImage(data.image_url);
-      }
-
-      if (data.product_images && data.product_images.length > 0) {
-        allImages.push(...data.product_images.map((pi: any) => pi.image_url));
-        if (!data.image_url && data.product_images.length > 0) {
-          setSelectedImage(data.product_images[0].image_url);
-        }
       }
 
       setImages(allImages);
