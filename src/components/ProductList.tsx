@@ -52,9 +52,10 @@ const ProductList = () => {
 
   const filteredProducts = selectedCategory === "all"
     ? products
-    : products.filter(
-        (product) => product.categories?.name.toLowerCase() === selectedCategory.toLowerCase()
-      );
+    : products.filter((product) => {
+        if (!product.categories?.name) return false;
+        return product.categories.name.toLowerCase() === selectedCategory.toLowerCase();
+      });
 
   if (loading) {
     return (
