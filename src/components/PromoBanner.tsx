@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
 
 const PromoBanner = () => {
