@@ -90,11 +90,7 @@ const ProductDetail = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col">
-        <CategoryFilterProvider>
-          <ProductSearchProvider>
-            <Header />
-          </ProductSearchProvider>
-        </CategoryFilterProvider>
+        <Header />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">Carregando...</div>
         </main>
@@ -106,11 +102,7 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <div className="min-h-screen flex flex-col">
-        <CategoryFilterProvider>
-          <ProductSearchProvider>
-            <Header />
-          </ProductSearchProvider>
-        </CategoryFilterProvider>
+        <Header />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">Produto não encontrado</div>
         </main>
@@ -121,11 +113,7 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <CategoryFilterProvider>
-        <ProductSearchProvider>
-          <Header />
-        </ProductSearchProvider>
-      </CategoryFilterProvider>
+      <Header />
       <main className="flex-1 container mx-auto px-4 py-8 relative z-0">
         <Button
           variant="ghost"
