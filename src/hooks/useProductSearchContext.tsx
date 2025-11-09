@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 interface ProductSearchContextType {
   searchQuery: string;
@@ -8,7 +9,16 @@ interface ProductSearchContextType {
 const ProductSearchContext = createContext<ProductSearchContextType | undefined>(undefined);
 
 export const ProductSearchProvider = ({ children }: { children: ReactNode }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
+
+  useEffect(() => {
+    if (searchQuery) {
+      setSearchParams({ search: searchQuery });
+    } else {
+      setSearchParams({});
+    }
+  }, [searchQuery, setSearchParams]);
 
   return (
     <ProductSearchContext.Provider value={{ searchQuery, setSearchQuery }}>
