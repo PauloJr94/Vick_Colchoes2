@@ -94,12 +94,6 @@ const Header = () => {
           {/* Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             <button
-              onClick={() => handleCategoryClick("all")}
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              OFERTAS
-            </button>
-            <button
               onClick={() => handleCategoryClick("colchões")}
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
