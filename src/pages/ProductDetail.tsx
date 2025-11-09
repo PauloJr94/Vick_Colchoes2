@@ -128,11 +128,11 @@ const ProductDetail = () => {
           <Header />
         </ProductSearchProvider>
       </CategoryFilterProvider>
-      <main className="flex-1 container mx-auto px-4 py-8">
+      <main className="flex-1 container mx-auto px-4 py-8 relative z-0">
         <Button
           variant="ghost"
           onClick={() => navigate("/")}
-          className="mb-6 flex items-center gap-2"
+          className="mb-6 flex items-center gap-2 cursor-pointer"
         >
           <ArrowLeft className="h-4 w-4" />
           Voltar
