@@ -23,7 +23,7 @@ const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const { selectedCategory } = useCategoryFilter();
-  const { searchQuery, setSearchQuery, filteredProducts: searchFilteredProducts } = useProductSearch(products);
+  const { searchQuery } = useProductSearchContext();
 
   useEffect(() => {
     fetchProducts();
