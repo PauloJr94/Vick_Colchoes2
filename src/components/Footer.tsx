@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { MessageCircle, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpg";
 
