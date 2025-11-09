@@ -130,6 +130,25 @@ const Dashboard = () => {
     fetchProducts();
   };
 
+  const filteredProducts = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return products;
+    }
+
+    const query = searchQuery.toLowerCase().trim();
+    return products.filter((product) => {
+      const name = product.name.toLowerCase();
+      const description = (product.description || '').toLowerCase();
+      const category = (product.categories?.name || '').toLowerCase();
+
+      return (
+        name.includes(query) ||
+        description.includes(query) ||
+        category.includes(query)
+      );
+    });
+  }, [products, searchQuery]);
+
   if (loading || !isAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center">
