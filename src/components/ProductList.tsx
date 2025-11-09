@@ -72,8 +72,12 @@ const ProductList = () => {
     ? products
     : products.filter((product) => {
         if (!product.categories?.name) return false;
-        return product.categories.name.toLowerCase() === selectedCategory.toLowerCase();
+        const match = product.categories.name.toLowerCase() === selectedCategory.toLowerCase();
+        return match;
       });
+
+  console.log("selectedCategory:", selectedCategory);
+  console.log("filteredProducts:", filteredProducts);
 
   if (loading) {
     return (
