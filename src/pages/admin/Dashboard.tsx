@@ -233,8 +233,8 @@ const Dashboard = () => {
             </Button>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="relative flex-1 max-w-xs">
+          <div className="flex items-center gap-3 justify-between">
+            <div className="relative max-w-xs">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
