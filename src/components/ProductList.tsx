@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import ProductCard from "./ProductCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCategoryFilter } from "@/hooks/useCategoryFilter";
-import { useProductSearch } from "@/hooks/useProductSearch";
-import SearchBar from "./SearchBar";
+import { useProductSearchContext } from "@/hooks/useProductSearchContext";
 
 interface Product {
   id: string;
