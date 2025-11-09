@@ -86,7 +86,9 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <CategoryFilterProvider>
-          <Header />
+          <ProductSearchProvider>
+            <Header />
+          </ProductSearchProvider>
         </CategoryFilterProvider>
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">Carregando...</div>
@@ -100,7 +102,9 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <CategoryFilterProvider>
-          <Header />
+          <ProductSearchProvider>
+            <Header />
+          </ProductSearchProvider>
         </CategoryFilterProvider>
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">Produto não encontrado</div>
@@ -113,7 +117,9 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <CategoryFilterProvider>
-        <Header />
+        <ProductSearchProvider>
+          <Header />
+        </ProductSearchProvider>
       </CategoryFilterProvider>
       <main className="flex-1 container mx-auto px-4 py-8">
         <Button
