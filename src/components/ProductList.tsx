@@ -31,45 +31,35 @@ const ProductList = () => {
     try {
       setLoading(true);
 
-      // First, fetch all categories
-      const { data: categoriesData, error: categoriesError } = await supabase
-        .from("categories")
-        .select("id, name");
-
-      if (categoriesError) throw categoriesError;
-
-      console.log("Categories data:", categoriesData);
-
-      // Create a map of category IDs to names
-      const categoryMap: Record<string, string> = {};
-      categoriesData?.forEach((cat: any) => {
-        categoryMap[cat.id] = cat.name;
-      });
-
-      console.log("Category map:", categoryMap);
-
-      // Fetch products
+      // Fetch products with their categories using join
       const { data, error } = await supabase
         .from("products")
-        .select("*")
+        .select(`
+          id,
+          name,
+          description,
+          price,
+          discount,
+          image_url,
+          is_featured,
+          category_id,
+          categories (
+            name
+          )
+        `)
         .order("created_at", { ascending: false });
 
       if (error) throw error;
 
-      // Map products with category names
-      const productsWithCategories = (data || []).map((product: any) => ({
-        ...product,
-        categories: product.category_id ? { name: categoryMap[product.category_id] } : null
-      }));
-
-      console.log("Produtos com categorias:", productsWithCategories);
-      if (productsWithCategories.length > 0) {
+      console.log("Produtos carregados:", data);
+      if (data && data.length > 0) {
         console.log("Primeiros 3 produtos com categorias:");
-        productsWithCategories.slice(0, 3).forEach((p: any, i: number) => {
-          console.log(`Produto ${i}:`, p.name, "Category:", p.categories?.name);
+        data.slice(0, 3).forEach((p: any, i: number) => {
+          console.log(`Produto ${i}:`, p.name, "Category:", p.categories?.name, "category_id:", p.category_id);
         });
       }
-      setProducts(productsWithCategories);
+
+      setProducts(data || []);
     } catch (error) {
       console.error("Erro ao carregar produtos:", error);
       setProducts([]);
