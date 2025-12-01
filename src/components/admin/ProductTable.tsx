@@ -51,49 +51,51 @@ export const ProductTable = ({ products, loading, onEdit, onDelete }: ProductTab
         <TableBody>
           {products.map((product) => (
             <TableRow key={product.id}>
-              <TableCell className="w-20 min-w-20">
+              <TableCell className="p-2 w-16">
                 {product.image_url ? (
                   <img
                     src={product.image_url}
                     alt={product.name}
-                    className="w-16 h-16 object-cover rounded"
+                    className="w-12 h-12 object-cover rounded"
                   />
                 ) : (
-                  <div className="w-16 h-16 bg-muted rounded flex items-center justify-center">
-                    <span className="text-xs text-muted-foreground">Sem imagem</span>
+                  <div className="w-12 h-12 bg-muted rounded flex items-center justify-center">
+                    <span className="text-xs text-muted-foreground">-</span>
                   </div>
                 )}
               </TableCell>
-              <TableCell className="font-medium min-w-32">{product.name}</TableCell>
-              <TableCell className="max-w-xs truncate min-w-40">
+              <TableCell className="p-2 font-medium text-sm">{product.name}</TableCell>
+              <TableCell className="p-2 text-xs truncate max-w-32">
                 {product.description || '-'}
               </TableCell>
-              <TableCell className="min-w-24">
+              <TableCell className="p-2 whitespace-nowrap text-sm">
                 R$ {product.price?.toFixed(2).replace('.', ',')}
               </TableCell>
-              <TableCell className="min-w-24">
-                <Badge variant={product.stock > 0 ? 'default' : 'destructive'}>
+              <TableCell className="p-2 whitespace-nowrap">
+                <Badge variant={product.stock > 0 ? 'default' : 'destructive'} className="text-xs">
                   {product.stock || 0}
                 </Badge>
               </TableCell>
-              <TableCell className="min-w-28">
+              <TableCell className="p-2 whitespace-nowrap text-sm">
                 {product.categories?.name || '-'}
               </TableCell>
-              <TableCell className="text-right min-w-20">
-                <div className="flex justify-end gap-2">
+              <TableCell className="p-2 text-right">
+                <div className="flex justify-end gap-1">
                   <Button
                     variant="ghost"
-                    size="icon"
+                    size="sm"
+                    className="h-8 w-8 p-0"
                     onClick={() => onEdit(product)}
                   >
-                    <Edit className="w-4 h-4" />
+                    <Edit className="w-3.5 h-3.5" />
                   </Button>
                   <Button
                     variant="ghost"
-                    size="icon"
+                    size="sm"
+                    className="h-8 w-8 p-0"
                     onClick={() => onDelete(product.id)}
                   >
-                    <Trash2 className="w-4 h-4" />
+                    <Trash2 className="w-3.5 h-3.5" />
                   </Button>
                 </div>
               </TableCell>
