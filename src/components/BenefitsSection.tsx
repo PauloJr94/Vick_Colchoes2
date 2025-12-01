@@ -1,4 +1,6 @@
-import { Truck, Tag, CreditCard, Ruler } from "lucide-react";
+import { useEffect, useRef } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { Truck, Tag, CreditCard, Ruler, ChevronLeft, ChevronRight } from "lucide-react";
 
 const benefits = [
   {
