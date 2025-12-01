@@ -31,7 +31,7 @@ const benefits = [
 const BenefitsSection = () => {
 
   return (
-    <section className="bg-secondary/10 py-6 sm:py-8 md:py-8">
+    <section className="bg-secondary/10 py-3 sm:py-4 md:py-5">
       <div className="container mx-auto px-3 sm:px-4">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-4">
           {benefits.map((benefit, index) => {
