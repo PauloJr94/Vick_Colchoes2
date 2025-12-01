@@ -35,8 +35,8 @@ export const ProductTable = ({ products, loading, onEdit, onDelete }: ProductTab
   }
 
   return (
-    <div className="border rounded-lg">
-      <Table>
+    <div className="border rounded-lg overflow-x-auto">
+      <Table className="w-full">
         <TableHeader>
           <TableRow>
             <TableHead>Imagem</TableHead>
