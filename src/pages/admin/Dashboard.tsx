@@ -94,7 +94,7 @@ const Dashboard = () => {
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
     }
-    window.location.href = '/';
+    window.location.href = '/admin/login';
   };
 
   const handleEdit = (product: any) => {
