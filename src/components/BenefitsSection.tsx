@@ -88,17 +88,25 @@ const BenefitsSection = () => {
         </div>
 
         {/* Mobile Carousel */}
-        <div className="md:hidden">
-          <div className="overflow-hidden" ref={emblaRef}>
+        <div className="md:hidden flex items-center justify-between gap-2">
+          <button
+            ref={prevButtonRef}
+            className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 transition-colors flex-shrink-0"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="h-5 w-5 text-accent" />
+          </button>
+
+          <div className="flex-1 overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 return (
-                  <div key={index} className="flex-[0_0_100%] px-2 py-3 flex flex-row items-start gap-3 min-w-0">
-                    <div className="p-2 bg-accent/10 rounded-lg flex-shrink-0">
+                  <div key={index} className="flex-[0_0_100%] px-3 py-3 flex flex-col items-center text-center gap-2 min-w-0">
+                    <div className="p-2 bg-accent/10 rounded-lg">
                       <Icon className="h-5 w-5 text-accent" />
                     </div>
-                    <div className="flex-1 text-left">
+                    <div>
                       <h3 className="font-semibold text-sm text-foreground leading-tight">
                         {benefit.title}
                       </h3>
@@ -124,23 +132,13 @@ const BenefitsSection = () => {
             </div>
           </div>
 
-          {/* Carousel Controls */}
-          <div className="flex items-center justify-between mt-3 px-2">
-            <button
-              ref={prevButtonRef}
-              className="p-1.5 rounded-lg bg-accent/10 hover:bg-accent/20 transition-colors"
-              aria-label="Anterior"
-            >
-              <ChevronLeft className="h-4 w-4 text-accent" />
-            </button>
-            <button
-              ref={nextButtonRef}
-              className="p-1.5 rounded-lg bg-accent/10 hover:bg-accent/20 transition-colors"
-              aria-label="Próximo"
-            >
-              <ChevronRight className="h-4 w-4 text-accent" />
-            </button>
-          </div>
+          <button
+            ref={nextButtonRef}
+            className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 transition-colors flex-shrink-0"
+            aria-label="Próximo"
+          >
+            <ChevronRight className="h-5 w-5 text-accent" />
+          </button>
         </div>
       </div>
     </section>
