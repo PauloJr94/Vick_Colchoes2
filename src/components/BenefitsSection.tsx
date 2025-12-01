@@ -31,11 +31,30 @@ const benefits = [
 ];
 
 const BenefitsSection = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const prevButtonRef = useRef<HTMLButtonElement>(null);
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!emblaApi || !prevButtonRef.current || !nextButtonRef.current) return;
+
+    const onPrevButtonClick = () => emblaApi.scrollPrev();
+    const onNextButtonClick = () => emblaApi.scrollNext();
+
+    prevButtonRef.current.addEventListener("click", onPrevButtonClick);
+    nextButtonRef.current.addEventListener("click", onNextButtonClick);
+
+    return () => {
+      prevButtonRef.current?.removeEventListener("click", onPrevButtonClick);
+      nextButtonRef.current?.removeEventListener("click", onNextButtonClick);
+    };
+  }, [emblaApi]);
 
   return (
     <section className="bg-secondary/10 py-3 sm:py-4 md:py-5">
       <div className="container mx-auto px-3 sm:px-4">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2 md:gap-3">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2 md:gap-3">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
