@@ -14,13 +14,13 @@ const CategoryIcons = () => {
   const { selectedCategory, setSelectedCategory } = useCategoryFilter();
 
   return (
-    <section className="py-16 bg-secondary/30">
+    <section className="py-8 sm:py-12 md:py-16 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12 text-foreground">
           Encontre o que procura
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 md:gap-6 justify-items-center">
           {categories.map((category, index) => {
             const Icon = category.icon;
             const isSelected = selectedCategory.toLowerCase() === category.name.toLowerCase();
