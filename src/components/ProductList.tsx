@@ -117,15 +117,15 @@ const ProductList = () => {
 
   if (loading) {
     return (
-      <section className="py-16">
+      <section className="py-8 sm:py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             {[...Array(8)].map((_, i) => (
-              <div key={i} className="space-y-4">
+              <div key={i} className="space-y-3 sm:space-y-4">
                 <Skeleton className="aspect-[4/3] w-full" />
-                <Skeleton className="h-6 w-3/4" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-8 w-1/2" />
+                <Skeleton className="h-5 sm:h-6 w-3/4" />
+                <Skeleton className="h-3 sm:h-4 w-full" />
+                <Skeleton className="h-7 sm:h-8 w-1/2" />
               </div>
             ))}
           </div>
