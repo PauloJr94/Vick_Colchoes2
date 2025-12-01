@@ -119,7 +119,7 @@ const Settings = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div>
             <h1 className="text-2xl font-bold">Configurações da Loja</h1>
-            <p className="text-sm text-muted-foreground">V Colchões</p>
+            <p className="text-sm text-muted-foreground">Vick Colchões</p>
           </div>
           <Button
             variant="outline"

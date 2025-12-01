@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <img src={logo} alt="V Colchões" className="h-10 sm:h-12 w-10 sm:w-12 rounded-full object-cover" />
               <div className="min-w-0">
-                <h3 className="text-base sm:text-lg md:text-xl font-bold">V Colchões</h3>
+                <h3 className="text-base sm:text-lg md:text-xl font-bold">Vick Colchões</h3>
                 <p className="text-xs sm:text-sm opacity-90">Sua melhor noite de sono</p>
               </div>
             </div>
@@ -98,7 +98,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-4 sm:mt-6 md:mt-8 pt-4 sm:pt-6 md:pt-8 text-center">
           <p className="text-xs sm:text-sm opacity-80">
-            © {new Date().getFullYear()} V Colchões. Todos os direitos reservados.
+            © {new Date().getFullYear()} Vick Colchões. Todos os direitos reservados.
           </p>
         </div>
       </div>
