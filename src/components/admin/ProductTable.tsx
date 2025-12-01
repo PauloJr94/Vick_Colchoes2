@@ -79,8 +79,8 @@ export const ProductTable = ({ products, loading, onEdit, onDelete }: ProductTab
               <TableCell className="p-2 whitespace-nowrap text-sm">
                 {product.categories?.name || '-'}
               </TableCell>
-              <TableCell className="p-2 text-right">
-                <div className="flex justify-end gap-1">
+              <TableCell className="p-2 text-center">
+                <div className="flex justify-center gap-1">
                   <Button
                     variant="ghost"
                     size="sm"
