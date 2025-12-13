@@ -84,7 +84,7 @@ export const ProductFormDialog = ({ open, onClose, product, categories }: Produc
 
     try {
       const { error: uploadError, data } = await supabase.storage
-        .from('products')
+        .from('PRODUCTS')
         .upload(filePath, file, {
           cacheControl: '3600',
           upsert: true,
@@ -95,7 +95,7 @@ export const ProductFormDialog = ({ open, onClose, product, categories }: Produc
         throw new Error(`Erro ao fazer upload: ${uploadError.message}`);
       }
 
-      const { data: publicUrl } = supabase.storage.from('products').getPublicUrl(filePath);
+      const { data: publicUrl } = supabase.storage.from('PRODUCTS').getPublicUrl(filePath);
       return publicUrl.publicUrl;
     } catch (error: any) {
       console.error('Upload failed:', error);
