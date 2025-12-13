@@ -150,21 +150,26 @@ const ProductDetail = () => {
             </div>
 
             {images.length > 1 && (
-              <div className="grid grid-cols-4 gap-2">
-                {images.map((image, index) => (
+              <div className="grid grid-cols-5 gap-2">
+                {images.slice(0, 5).map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImage(image)}
                     className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${
                       selectedImage === image
-                        ? "border-accent"
+                        ? "border-accent ring-2 ring-accent"
                         : "border-border hover:border-accent/50"
                     }`}
+                    title={`Imagem ${index + 1}`}
                   >
                     <img
                       src={image}
                       alt={`${product.name} ${index + 1}`}
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800";
+                      }}
                     />
                   </button>
                 ))}
