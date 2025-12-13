@@ -3,6 +3,7 @@ import PromoBanner from "@/components/PromoBanner";
 import BenefitsSection from "@/components/BenefitsSection";
 import CategoryIcons from "@/components/CategoryIcons";
 import ProductList from "@/components/ProductList";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
