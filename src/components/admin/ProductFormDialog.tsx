@@ -134,11 +134,18 @@ export const ProductFormDialog = ({ open, onClose, product, categories }: Produc
     setLoading(true);
 
     try {
-      let imageUrl = formData.image_url;
+      let imageUrls: string[] = [];
 
-      if (imageFile) {
-        imageUrl = await uploadImage(imageFile);
+      if (imageFiles.length > 0) {
+        imageUrls = await Promise.all(imageFiles.map((file) => uploadImage(file)));
       }
+
+      const allImageUrls = [
+        ...imagePreviews.filter((preview) => !preview.startsWith('data:')),
+        ...imageUrls,
+      ];
+
+      const imageUrl = allImageUrls.length > 0 ? JSON.stringify(allImageUrls) : formData.image_url;
 
       const productData = {
         name: formData.name,
