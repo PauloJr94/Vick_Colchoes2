@@ -109,14 +109,19 @@ const Dashboard = () => {
     setIsFormOpen(true);
   };
 
-  const handleDelete = async (productId: string) => {
-    if (!confirm('Tem certeza que deseja excluir este produto?')) return;
+  const handleDeleteClick = (productId: string) => {
+    setDeletingProductId(productId);
+    setDeleteConfirmOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!deletingProductId) return;
 
     try {
       const { error } = await supabase
         .from('products')
         .delete()
-        .eq('id', productId);
+        .eq('id', deletingProductId);
 
       if (error) throw error;
 
