@@ -6,9 +6,11 @@ import CategoryIcons from "@/components/CategoryIcons";
 import ProductList from "@/components/ProductList";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import { useCategoryFilter } from "@/hooks/useCategoryFilter";
 
 const Index = () => {
   const [showContact, setShowContact] = useState(false);
+  const { selectedCategory } = useCategoryFilter();
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -20,6 +22,13 @@ const Index = () => {
 
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
+
+  useEffect(() => {
+    if (selectedCategory !== "all") {
+      window.location.hash = "";
+      setShowContact(false);
+    }
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen bg-background">
