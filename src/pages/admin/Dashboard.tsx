@@ -29,6 +29,8 @@ const Dashboard = () => {
   const [editingProduct, setEditingProduct] = useState<any>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  const [deletingProductId, setDeletingProductId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !isAdmin) {
