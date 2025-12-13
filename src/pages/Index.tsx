@@ -6,44 +6,33 @@ import CategoryIcons from "@/components/CategoryIcons";
 import ProductList from "@/components/ProductList";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import { useCategoryFilter } from "@/hooks/useCategoryFilter";
 
 const Index = () => {
   const [showContact, setShowContact] = useState(false);
-  const { selectedCategory } = useCategoryFilter();
 
   useEffect(() => {
     const handleHashChange = () => {
-      setShowContact(window.location.hash === "#contato");
+      const isContact = window.location.hash === "#contato";
+      setShowContact(isContact);
     };
 
-    window.addEventListener("hashchange", handleHashChange);
+    // Initial check
     handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
 
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
-
-  useEffect(() => {
-    if (selectedCategory !== "all") {
-      window.location.hash = "";
-      setShowContact(false);
-    }
-  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {showContact ? (
-          <ContactSection />
-        ) : (
-          <>
-            <PromoBanner />
-            <BenefitsSection />
-            <CategoryIcons />
-            <ProductList />
-          </>
-        )}
+        <PromoBanner />
+        <BenefitsSection />
+        <CategoryIcons />
+        {showContact ? <ContactSection /> : <ProductList />}
       </main>
       <Footer />
     </div>
